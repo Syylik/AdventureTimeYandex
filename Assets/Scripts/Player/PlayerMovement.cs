@@ -1,10 +1,8 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMovement : MonoBehaviour, IMovable
+public class PlayerMovement : Movement
 {
-    [SerializeField] private float _moveSpeed;
-
     [Header("Jumping")]
     [SerializeField] private float _jumpHeight;
 
@@ -25,14 +23,17 @@ public class PlayerMovement : MonoBehaviour, IMovable
 
     private bool IsGrounded() { return Physics.CheckSphere(_groundCheck.position, _groundCheckRadius, _groundMask); }
 
-    public void Move(Vector2 moveDir)
+    public override void Move(Vector2 moveDir)
     {
         Vector3 move = Vector3.zero;
+
+        //Движение
         if(IsGrounded()) move = transform.right * moveDir.x + transform.forward * moveDir.y;
         else move = (transform.right * moveDir.x + transform.forward * moveDir.y) / 2f;
-        _controller.Move(move * _moveSpeed * Time.deltaTime);
+        _controller.Move(move * moveSpeed * Time.deltaTime);
 
-        if(IsGrounded() && _velocity.y < 0) _velocity.y = _gravity * 2f;
+        //Гравитация
+        if(IsGrounded() && _velocity.y < 0) _velocity.y = _gravity;
 
         _velocity.y += _gravity * Time.deltaTime;
         _controller.Move(_velocity * Time.deltaTime);
@@ -41,7 +42,7 @@ public class PlayerMovement : MonoBehaviour, IMovable
     public void Jump()
     {
         if(!IsGrounded()) return;
-
+        
         _velocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
     }
 

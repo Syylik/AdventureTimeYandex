@@ -1,9 +1,10 @@
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerMovement), typeof(PlayerLook), typeof(Health))]
+[RequireComponent(typeof(PlayerMovement), typeof(PlayerLook), typeof(PlayerWeapon))]
 public class Player : MonoBehaviour
 {
     private PlayerMovement _plMove;
+    private PlayerWeapon _plAttack;
     private PlayerLook _plLook;
 
     private UnityEngine.InputSystem.Input _input;
@@ -11,6 +12,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _plMove = GetComponent<PlayerMovement>();
+        _plAttack = GetComponent<PlayerWeapon>();
         _plLook = GetComponent<PlayerLook>();
     }
 
@@ -18,7 +20,9 @@ public class Player : MonoBehaviour
     {
         _input = InputSystem.input;
 
+        //_plAttack.currrentWeapon.OnAttack += _plAnim.Attack();
         _input.Player.Jump.performed += context => _plMove.Jump();
+        _input.Player.Fire.performed += context => _plAttack.Attack();
     }
 
     private void Update()
