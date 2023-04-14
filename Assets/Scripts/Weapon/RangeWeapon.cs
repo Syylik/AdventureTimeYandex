@@ -3,27 +3,29 @@ using UnityEngine.Events;
 
 public class RangeWeapon : MonoBehaviour, IWeapon
 {
-    [SerializeField, Min(0)] private float _damage;
-    [SerializeField] private float _projectile;
+    [SerializeField, Min(0)] private float _damage = 1f;
+    [SerializeField] private Projectile _projectile;
+    [SerializeField] private Transform _projectileSpawnPos;
 
-    [SerializeField, Min(0)] private float _attackColdown; // Задержка между атаками (в сек)
-    private float _coldownTimeLeft;
+    [SerializeField, Min(0)] private float _shootRate = 2f;
+    private float _nextAttackTime;
 
-    public event UnityAction OnAttack;
+    internal bool canShoot = true;
 
-    private void Update() => _coldownTimeLeft -= Time.deltaTime;
-
-    public void Attack()
+    public bool StartAttack()
     {
-        if(_coldownTimeLeft <= 0)
+        if(Time.time >= _nextAttackTime)
         {
-            OnAttack?.Invoke();
-            _coldownTimeLeft = _attackColdown;
+            _nextAttackTime = Time.time + 1f / _shootRate;
+            SpawnProjectile();
+            return true;
         }
+        return false;
     }
 
-    private void SpawnProjectile()
+    public void SpawnProjectile()
     {
-
+        var projectile = Instantiate(_projectile, _projectileSpawnPos.position, _projectile.transform.rotation);
+        projectile.Init(_damage, transform.forward);
     }
 }
