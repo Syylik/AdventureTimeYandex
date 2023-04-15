@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[AddComponentMenu("States/Enemy")]
+[CreateAssetMenu(menuName = "States/EnemyMove")]
 public class EnemyMoveState : EnemyState
 {
     [SerializeField] private float _playerFollowRadius;
@@ -9,11 +9,6 @@ public class EnemyMoveState : EnemyState
     [SerializeField] private EnemyState _attackState;
 
     private Transform _player;
-
-    public void Init(Transform player)
-    {
-        _player = player;
-    }
 
     public override void Run()
     {

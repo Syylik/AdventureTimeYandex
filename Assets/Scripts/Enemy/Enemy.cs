@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(EnemyHealth))]
 public class Enemy : Movement
 {
     [Header("Move")]
     public List<Transform> movePoints;
 
-    [Header("Attack")]
+    [Header("StartAttack")]
     public Transform attackPoint;
 
     [Header("States")]
@@ -15,10 +16,6 @@ public class Enemy : Movement
     [SerializeField] private EnemyState _attackState;
 
     private EnemyState _currectState;
-
-    public Enemy main { get; set; }
-
-    private void Awake() => main = this;
 
     private void Start()
     {
