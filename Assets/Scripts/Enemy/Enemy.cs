@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-[RequireComponent(typeof(EnemyHealth))]
+[RequireComponent(typeof(EnemyHealth),(typeof(NavMeshAgent)))]
 public class Enemy : Movement
 {
     [Header("Move")]
     public List<Transform> movePoints;
 
-    [Header("StartAttack")]
-    public Transform attackPoint;
+    internal NavMeshAgent agent;
 
     [Header("States")]
     [SerializeField] private EnemyState _startState;
@@ -16,6 +16,11 @@ public class Enemy : Movement
     [SerializeField] private EnemyState _attackState;
 
     private EnemyState _currectState;
+
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+    }
 
     private void Start()
     {
@@ -34,5 +39,10 @@ public class Enemy : Movement
         _currectState = Instantiate(newState);
         _currectState.author = this;
         _currectState.Enter();
+    }
+
+    public override void Move(Vector3 targetPos)
+    {
+        agent.SetDestination(targetPos);
     }
 }

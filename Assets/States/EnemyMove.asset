@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerFollowRadius: 0.54
   _attackStartDistance: 3.69
+  _minDistance: 0.5
   _attackState: {fileID: 11400000, guid: 69c88cfb35fa7f84ebbbbb701938c98a, type: 2}
+  numberPoint: 0
