@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.08828739, g: 0.3643807, b: 0.98541975, a: 1}
+  m_IndirectSpecularColor: {r: 0.08815004, g: 0.36419293, b: 0.9845511, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -667,20 +667,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 102725891039382291, guid: 2e62f5703e5f8d2488a5e1bc8433be41,
+    - target: {fileID: 114051214696948948, guid: 2e62f5703e5f8d2488a5e1bc8433be41,
         type: 3}
-      propertyPath: OnAttack.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      propertyPath: moveSpeed
+      value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 102725891039382291, guid: 2e62f5703e5f8d2488a5e1bc8433be41,
+    - target: {fileID: 114051214696948948, guid: 2e62f5703e5f8d2488a5e1bc8433be41,
         type: 3}
-      propertyPath: OnAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 102725891039382291, guid: 2e62f5703e5f8d2488a5e1bc8433be41,
-        type: 3}
-      propertyPath: OnAttack.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
+      propertyPath: sprintSpeed
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

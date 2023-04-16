@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerMovement), typeof(PlayerWeapon))]
 public class Player : MonoBehaviour
@@ -18,12 +19,15 @@ public class Player : MonoBehaviour
     {
         _input = InputSystem.input;
 
-        //_plAttack.currentWeapon.OnAttack += _plAnim.AttackAnim();
-        _input.Player.Fire.performed += context => _plAttack.Attack();
+        _input.Player.Fire.performed += context => _plAttack.StartAttack();
+        _input.Player.PreviousWeapon.performed += context => _plAttack.PreviousWeapon();
+        _input.Player.NextWeapon.performed += context => _plAttack.NextWeapon();
     }
 
     private void Update()
     {
+        //var a = Mouse.current.scroll.down.ReadValue<float>();
+        //Mouse.current.scroll.up
         _plMove.Move(_input.Player.Move.ReadValue<Vector2>());
         _plMove.Look(_input.Player.Look.ReadValue<Vector2>());
         _plMove.SetJump(_input.Player.Jump.IsPressed(), _input.Player.Jump.WasReleasedThisFrame());

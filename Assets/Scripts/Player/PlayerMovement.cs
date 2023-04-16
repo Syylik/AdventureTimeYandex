@@ -51,7 +51,6 @@ public class PlayerMovement : Movement {
 
     public bool playerCanMove = true;
     public bool walkByDefault = true;
-    public new float moveSpeed = 4f;
     public float sprintSpeed = 8f;
     public float jumpPower = 5f;
     public bool canJump = true;
