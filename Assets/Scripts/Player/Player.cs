@@ -7,12 +7,16 @@ public class Player : MonoBehaviour
     private PlayerMovement _plMove;
     private PlayerWeapon _plAttack;
 
+    private Animator _anim;
+
     private UnityEngine.InputSystem.Input _input;
 
     private void Awake()
     {
         _plMove = GetComponent<PlayerMovement>();
         _plAttack = GetComponent<PlayerWeapon>();
+        _anim = GetComponent<Animator>();
+        _plAttack.anim = _anim;
     }
 
     private void Start()

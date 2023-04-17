@@ -9,6 +9,6 @@ public abstract class Movement : MonoBehaviour
         targetPos.y = transform.position.y;
 
         transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);    
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(targetPos - transform.position), 120f * Time.deltaTime);    
+        //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(targetPos - transform.position), 120f * Time.deltaTime);    
     }
 }
