@@ -4,9 +4,9 @@ public class WeaponItem : MonoBehaviour
 {
     [SerializeField] private Weapon _weapon;
 
-    public Weapon PickupWeapon(Transform parent)
+    public Weapon PickupWeapon()
     {
-        var weapon = Instantiate(_weapon, _weapon.transform.position, _weapon.transform.rotation, parent);
-        return weapon;
+        Destroy(gameObject);
+        return _weapon;
     }
 }
