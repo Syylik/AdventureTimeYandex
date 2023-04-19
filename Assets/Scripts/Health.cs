@@ -17,7 +17,11 @@ public abstract class Health : MonoBehaviour
 
     internal bool canTakeHit = true;
 
-    private void Start() => health = maxHealth;
+    private void Start()
+    {
+        OnDie.AddListener(() => FindObjectOfType<EnemiesKilled>().CheckDeads());
+        health = maxHealth;
+    }
 
     public virtual void ChangeHealth(float value)
     {
