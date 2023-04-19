@@ -9,11 +9,13 @@ public class Projectile : Movement
     {
         _damage = damage;
         _moveDir = moveDir;
+        Move(moveDir);
+        Destroy(gameObject, 5f);
     }
 
-    private void Update()
+    public override void Move(Vector3 targetPos)
     {
-        Move(_moveDir);
+        GetComponent<Rigidbody>().AddForce(targetPos.normalized * moveSpeed, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -21,6 +23,7 @@ public class Projectile : Movement
         if(collision.collider.TryGetComponent<EnemyHealth>(out EnemyHealth health))
         {
             health.ChangeHealth(-_damage);
+            Destroy(gameObject);
         }
     }
 }

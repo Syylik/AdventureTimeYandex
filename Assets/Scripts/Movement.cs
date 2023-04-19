@@ -6,9 +6,10 @@ public abstract class Movement : MonoBehaviour
 
     public virtual void Move(Vector3 targetPos)
     {
-        targetPos.y = transform.position.y;
-
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);    
-        //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(targetPos - transform.position), 120f * Time.deltaTime);    
+        targetPos = transform.forward;
+        Vector3 pos = transform.position;
+        pos += targetPos * moveSpeed * Time.deltaTime;
+        pos.y = targetPos.y;
+        transform.position = pos;
     }
 }

@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     {
         _plMove = GetComponent<PlayerMovement>();
         _plAttack = GetComponent<PlayerWeapon>();
+
         _anim = GetComponent<Animator>();
         _plAttack.anim = _anim;
     }
