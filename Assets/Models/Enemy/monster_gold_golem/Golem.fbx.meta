@@ -17,7 +17,11 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Avatar Rig Configuration mis-match. Bone length in configuration
+      does not match position in animation file:\n\t'mixamorig:LeftLeg' : position
+      error = 45.258789 mm\n\t'mixamorig:LeftFoot' : position error = 74.611504 mm\n\t'mixamorig:RightLeg'
+      : position error = 69.337212 mm\n\t'mixamorig:RightToeBase' : position error
+      = 190.341080 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -76,7 +80,8 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips: []
+  referencedClips:
+  - 89577e981513e91459c5921376964c7d
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
