@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: EnemyAttack
   m_EditorClassIdentifier: 
   _weapon: {fileID: 0}
-  _attackEndRadius: 0
-  _moveState: {fileID: 0}
+  _attackEndRadius: 3
+  _moveState: {fileID: 11400000, guid: 15fe4e5a40619cf4f82f384a962deac4, type: 2}
