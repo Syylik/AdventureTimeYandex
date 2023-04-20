@@ -289,7 +289,7 @@ public class PlayerMovement : Movement {
         bool wasWalking = !isSprinting;
         if(useStamina)
         {
-            isSprinting = Keyboard.current.leftShiftKey.wasPressedThisFrame && !isCrouching && staminaInternal > 0 && (Mathf.Abs(fps_Rigidbody.velocity.x) > 0.01f || Mathf.Abs(fps_Rigidbody.velocity.x) > 0.01f);
+            isSprinting = Keyboard.current.leftShiftKey.isPressed && !isCrouching && staminaInternal > 0 && (Mathf.Abs(fps_Rigidbody.velocity.x) > 0.01f || Mathf.Abs(fps_Rigidbody.velocity.x) > 0.01f);
             if(isSprinting)
             {
                 staminaInternal -= (staminaDepletionSpeed * 2) * Time.deltaTime;
@@ -299,7 +299,7 @@ public class PlayerMovement : Movement {
                     StaminaMeter.color = Vector4.MoveTowards(StaminaMeter.color, new Vector4(1, 1, 1, 1), 0.15f);
                 }
             }
-            else if((!Keyboard.current.leftShiftKey.wasPressedThisFrame || Mathf.Abs(fps_Rigidbody.velocity.x) < 0.01f || Mathf.Abs(fps_Rigidbody.velocity.x) < 0.01f || isCrouching) && staminaInternal < staminaLevel)
+            else if((!Keyboard.current.leftShiftKey.isPressed || Mathf.Abs(fps_Rigidbody.velocity.x) < 0.01f || Mathf.Abs(fps_Rigidbody.velocity.x) < 0.01f || isCrouching) && staminaInternal < staminaLevel)
             {
                 staminaInternal += staminaDepletionSpeed * Time.deltaTime;
             }
@@ -312,7 +312,7 @@ public class PlayerMovement : Movement {
                 StaminaMeter.transform.localScale = new Vector3(x, 1, 1);
             }
         }
-        else { isSprinting = Keyboard.current.leftShiftKey.wasPressedThisFrame; }
+        else { isSprinting = Keyboard.current.leftShiftKey.isPressed; }
 
         Vector3 dMove = Vector3.zero;
         speed = walkByDefault ? isCrouching ? walkSpeedInternal : (isSprinting ? sprintSpeedInternal : walkSpeedInternal) : (isSprinting ? walkSpeedInternal : sprintSpeedInternal);
@@ -602,6 +602,7 @@ public class PlayerMovement : Movement {
             elapsed += Time.deltaTime;
             yield return null;
         }
+        if(Time.timeScale > 0f)
         playerCamera.transform.localPosition = cameraStartingPosition;
     }
 

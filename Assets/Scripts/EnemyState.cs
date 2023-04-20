@@ -5,7 +5,7 @@ public abstract class EnemyState : ScriptableObject
     public bool isFinished { get; protected set; }
     internal Enemy author;   // тот кто вызывает состо€ни€
 
-    public void Enter() { }  // старт, вход состо€ние (присваивание переменных)
+    public virtual void Enter() { }  // старт, вход состо€ние (присваивание переменных)
 
     public abstract void Run();     // работа состо€ни€
 

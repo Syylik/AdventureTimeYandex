@@ -8,6 +8,11 @@ public class EnemyAttackState : EnemyState
 
     [SerializeField] private EnemyState _moveState;
 
+    public override void Enter()
+    {
+        _weapon = author.weapon;
+    }
+
     public override void Run()
     {
         if(isFinished) return;

@@ -200,7 +200,7 @@ MonoBehaviour:
   _attackBox: {x: 1, y: 1, z: 1}
   attackMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 320
 --- !u!95 &3343686975673638648
 Animator:
   serializedVersion: 4

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2258cde6c85b3b042975e0354d07414d, type: 3}
   m_Name: EnemyMove
   m_EditorClassIdentifier: 
-  _playerFollowRadius: 0.54
-  _attackStartDistance: 3.69
+  _playerFollowRadius: 22
+  _attackStartDistance: 10
+  _minDistance: 0.5
   _attackState: {fileID: 11400000, guid: 69c88cfb35fa7f84ebbbbb701938c98a, type: 2}
