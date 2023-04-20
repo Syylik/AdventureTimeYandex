@@ -11,7 +11,6 @@ public abstract class Weapon : MonoBehaviour
     protected float _nextAttackTime;
 
     internal bool canAttack = true;
-
     public virtual bool StartAttack()
     {
         if(Time.time >= _nextAttackTime)

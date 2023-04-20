@@ -20,10 +20,12 @@ public class Projectile : Movement
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.TryGetComponent<EnemyHealth>(out EnemyHealth health))
+        if(collision.collider.TryGetComponent<Health>(out Health health))
         {
             health.ChangeHealth(-_damage);
             Destroy(gameObject);
         }
+        //transform.SetParent(collision.transform);
+        Destroy(gameObject, 1f);
     }
 }

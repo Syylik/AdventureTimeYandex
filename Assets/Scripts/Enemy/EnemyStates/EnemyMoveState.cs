@@ -30,9 +30,11 @@ public class EnemyMoveState : EnemyState
     {
         if (GetDistance(_player.position, author.transform.position) <= _playerFollowRadius)
         {
+            author.WalkAnim();
             author.Move(_player.position);
             if (GetDistance(_player.position, author.transform.position) <= _attackStartDistance)
             {
+                author.RunAnim();
                 author.SetState(_attackState);
             }
         }
@@ -40,11 +42,12 @@ public class EnemyMoveState : EnemyState
         {
             var points = author.movePoints.GetRange(0, author.movePoints.Count);
             author.Move(points[numberPoint].position);
-            
+            author.WalkAnim();
+
             if (Vector3.Distance(points[numberPoint].position, author.transform.position) <= _minDistance) 
             {
-                Debug.Log(_minDistance+" "+ author.agent.remainingDistance + " "+ numberPoint);
-                Debug.Log("!!!"+points[0] + points[1].position);
+                //Debug.Log(_minDistance+" "+ author.agent.remainingDistance + " "+ numberPoint);
+                //Debug.Log("!!!"+points[0] + points[1].position);
                 numberPoint = (numberPoint + 1) % points.Count;
             }
         }

@@ -8,9 +8,9 @@ public abstract class Health : MonoBehaviour
     public float maxHealth;
 
     [SerializeField] internal GameObject dieEffect;
-
-    //[SerializeField] internal RandomSound damageSound;
-    //[SerializeField] internal RandomSound dieSound;
+    [SerializeField] internal GameObject damageEffect;
+    [SerializeField] internal RandomSound damageSound;
+    [SerializeField] internal RandomSound dieSound;
 
     public UnityEvent<float, float> OnHealthChanged;
     public UnityEvent OnDie;
@@ -19,7 +19,8 @@ public abstract class Health : MonoBehaviour
 
     private void Start()
     {
-        OnDie.AddListener(() => FindObjectOfType<EnemiesKilled>().CheckDeads());
+        var killed = FindObjectsOfType<EnemiesKilled>();
+        foreach (var item in killed) OnDie.AddListener(() => item.CheckDeads());
         health = maxHealth;
     }
 
@@ -29,19 +30,20 @@ public abstract class Health : MonoBehaviour
         health += value;
         health = Mathf.Clamp(health, 0, maxHealth);
         OnHealthChanged?.Invoke(health, maxHealth);
-        if(health == 0)
+        if (damageEffect != null) Instantiate(damageEffect, transform.position, Quaternion.identity);
+        if(damageSound != null) damageSound.Play();
+        if (health == 0)
         {
             Die();
             return;
         }
-        //damageSound.Play();
     }
 
     public virtual void Die()
     {
         OnDie?.Invoke();
-        //dieSound.Play();
-        //Instantiate(dieEffect, transform.position, Quaternion.identity), 1.5f);
+        if(dieSound != null) dieSound.Play();
+        if(dieEffect != null) Instantiate(dieEffect, transform.position, Quaternion.identity);
     }
 
     public void TakeHitState(bool state) => canTakeHit = state;

@@ -4,7 +4,6 @@ public class PlayerHealth : Health
 {
     [SerializeField] private float _healthLoseSpeed;
     private float _healthAfter;
-    private RandomSound damageSound;
 
     private void Start() => _healthAfter = health;
 
