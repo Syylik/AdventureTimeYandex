@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1096503034260972240}
   - component: {fileID: 5608200267147291587}
   - component: {fileID: 2755195893787348364}
-  m_Layer: 0
+  - component: {fileID: 214628122}
+  m_Layer: 8
   m_Name: scarecrow
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
@@ -32,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 524594046665905032}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5608200267147291587
 MonoBehaviour:
@@ -75,6 +76,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &214628122
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323237862813415530}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6059604, y: 2.3529334, z: 1}
+  m_Center: {x: -0.5416661, y: 3.2747605, z: -5.9211245e-16}
 --- !u!1 &8786968174924939443
 GameObject:
   m_ObjectHideFlags: 0

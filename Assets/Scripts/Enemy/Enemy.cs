@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(EnemyHealth),(typeof(NavMeshAgent)))]
+[RequireComponent(typeof(EnemyHealth), (typeof(NavMeshAgent)))]
 public class Enemy : Movement
 {
     [Header("Move")]
@@ -25,7 +25,7 @@ public class Enemy : Movement
     {
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        agent.speed = moveSpeed;
+        SetSpeed(moveSpeed);
     }
 
     private void Start()
@@ -36,12 +36,11 @@ public class Enemy : Movement
 
     private void Update()
     {
-        if(!_currectState.isFinished) _currectState.Run();
+        if (!_currectState.isFinished) _currectState.Run();
     }
-
     public void SetState(EnemyState newState)
     {
-        if(_currectState != null) _currectState.Exit();
+        if (_currectState != null) _currectState.Exit();
 
         _currectState = Instantiate(newState);
         _currectState.author = this;
@@ -51,5 +50,24 @@ public class Enemy : Movement
     public override void Move(Vector3 targetPos)
     {
         agent.SetDestination(targetPos);
+    }
+
+    public void WalkAnim()
+    {
+        anim.SetBool("isWalk", true);
+        anim.SetBool("isRun", false);
+        SetSpeed(moveSpeed);
+    }
+
+    public void RunAnim()
+    {
+        anim.SetBool("isWalk", false);
+        anim.SetBool("isRun", true);
+        SetSpeed(moveSpeed + 4f);
+    }
+
+    public void SetSpeed(float speed)
+    {
+        agent.speed = speed;
     }
 }
