@@ -10,13 +10,15 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField, Min(0)] protected float _shootRate = 2f;
     protected float _nextAttackTime;
 
+    [SerializeField] private string AttackAnim = "Attack";
+
     internal bool canAttack = true;
     public virtual bool StartAttack()
     {
         if(Time.time >= _nextAttackTime)
         {
             _nextAttackTime = Time.time + 1f / _shootRate;
-            holderAnim.SetTrigger("Attack");
+            holderAnim.SetTrigger(AttackAnim);
             return true;
         }
         return false;

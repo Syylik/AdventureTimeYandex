@@ -6,7 +6,11 @@ public class RandomSound : MonoBehaviour
     [SerializeField] private AudioClip[] _clips;
     private AudioSource _audioSource;
 
+    [SerializeField] private bool _playOnStart = false;
+
     private void Awake() => _audioSource = GetComponent<AudioSource>();
+
+    private void Start() { if(_playOnStart) Play(); } 
 
     public void RandomizePitch(float pitchMin, float pitchMax) => _audioSource.pitch = Random.Range(pitchMin, pitchMax);
 

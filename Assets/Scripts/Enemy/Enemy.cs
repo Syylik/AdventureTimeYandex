@@ -14,7 +14,7 @@ public class Enemy : Movement
 
     [Header("States")]
     [SerializeField] private EnemyState _startState;
-    [SerializeField] private EnemyState _moveState;
+    [SerializeField] private EnemyMoveState _moveState;
     [SerializeField] private EnemyState _attackState;
 
     private EnemyState _currectState;
@@ -70,4 +70,8 @@ public class Enemy : Movement
     {
         agent.speed = speed;
     }
+
+    public void SetCanMove() => _moveState.canMove = true;
+    
+    public void SetCantMove() => _moveState.canMove = false;
 }

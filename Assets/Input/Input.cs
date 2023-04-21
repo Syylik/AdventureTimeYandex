@@ -541,6 +541,15 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""775e08a3-bd2f-4e0c-962c-08f7da8c5529"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -983,6 +992,17 @@ namespace UnityEngine.InputSystem
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c3ff99b3-8b7a-4fc3-81d7-a66f7a6c100e"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1071,6 +1091,7 @@ namespace UnityEngine.InputSystem
             m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
             m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
             m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
+            m_UI_Restart = m_UI.FindAction("Restart", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -1214,6 +1235,7 @@ namespace UnityEngine.InputSystem
         private readonly InputAction m_UI_TrackedDevicePosition;
         private readonly InputAction m_UI_TrackedDeviceOrientation;
         private readonly InputAction m_UI_Pause;
+        private readonly InputAction m_UI_Restart;
         public struct UIActions
         {
             private @Input m_Wrapper;
@@ -1229,6 +1251,7 @@ namespace UnityEngine.InputSystem
             public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
             public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
             public InputAction @Pause => m_Wrapper.m_UI_Pause;
+            public InputAction @Restart => m_Wrapper.m_UI_Restart;
             public InputActionMap Get() { return m_Wrapper.m_UI; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1271,6 +1294,9 @@ namespace UnityEngine.InputSystem
                     @Pause.started -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
                     @Pause.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
                     @Pause.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
+                    @Restart.started -= m_Wrapper.m_UIActionsCallbackInterface.OnRestart;
+                    @Restart.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnRestart;
+                    @Restart.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnRestart;
                 }
                 m_Wrapper.m_UIActionsCallbackInterface = instance;
                 if (instance != null)
@@ -1308,6 +1334,9 @@ namespace UnityEngine.InputSystem
                     @Pause.started += instance.OnPause;
                     @Pause.performed += instance.OnPause;
                     @Pause.canceled += instance.OnPause;
+                    @Restart.started += instance.OnRestart;
+                    @Restart.performed += instance.OnRestart;
+                    @Restart.canceled += instance.OnRestart;
                 }
             }
         }
@@ -1379,6 +1408,7 @@ namespace UnityEngine.InputSystem
             void OnTrackedDevicePosition(InputAction.CallbackContext context);
             void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
             void OnPause(InputAction.CallbackContext context);
+            void OnRestart(InputAction.CallbackContext context);
         }
     }
 }

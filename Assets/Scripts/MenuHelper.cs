@@ -21,5 +21,10 @@ public class MenuHelper : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    private void Start()
+    {
+        InputSystem.input.UI.Restart.performed += context => Restart();
+    }
+
     public void Leave() => Application.Quit();
 }

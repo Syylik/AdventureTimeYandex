@@ -369,19 +369,7 @@ MonoBehaviour:
       m_Calls: []
   OnDie:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2486614356689798380}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &3333599703523028646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,6 +385,7 @@ MonoBehaviour:
   _damage: 0.3
   _attackPoint: {fileID: 3333599704679036494}
   _shootRate: 2
+  AttackAnim: Attack
   _attackBox: {x: 1.88, y: 1.41, z: 3.04}
   _attackOffset: {x: 0.39, y: 0, z: -0.46}
   attackMask:
@@ -955,6 +944,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c5c9836aa3a71ca4eb745c654a1c1424, type: 3}
   - {fileID: 8300000, guid: d4dce20f33315924ba397ab3918093f7, type: 3}
   - {fileID: 8300000, guid: 2dc0048f237a4064eaaaeec5d5dd702a, type: 3}
+  _playOnStart: 0
 --- !u!82 &5886049513472920770
 AudioSource:
   m_ObjectHideFlags: 0

@@ -4,7 +4,12 @@ public class EnemyHealth : Health
 {
     public override void Die()
     {
-        Destroy(gameObject);
-        base.Die();        
+        base.Die();
+        if(TryGetComponent<Animator>(out Animator anim))
+        {
+            anim.SetTrigger("Die");
+            Destroy(gameObject, 4f);
+        }
+        else Destroy(gameObject);
     }
 }

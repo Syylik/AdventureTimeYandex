@@ -9,4 +9,6 @@ public class Door : MonoBehaviour
     private void Awake() => _anim = GetComponent<Animator>();
 
     public void OpenDoor() => _anim.SetTrigger("Open");
+
+    public void CloseDoor() => _anim.SetTrigger("Close");
 }

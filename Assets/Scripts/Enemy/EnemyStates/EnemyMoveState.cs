@@ -15,6 +15,8 @@ public class EnemyMoveState : EnemyState
 
     private int numberPoint=0;
 
+    internal bool canMove = true;
+
     public override void Enter()
     {
         _player = FindObjectOfType<Player>().transform;
@@ -22,7 +24,7 @@ public class EnemyMoveState : EnemyState
     }
     public override void Run()
     {        
-        if (isFinished) return;
+        if (isFinished || !canMove) return;
         Patroling();
     }
 
