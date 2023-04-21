@@ -41,9 +41,9 @@ public abstract class Health : MonoBehaviour
 
     public virtual void Die()
     {
+        OnDie?.Invoke();
         if(dieSound != null) dieSound.Play();
         if(dieEffect != null) Instantiate(dieEffect, transform.position, Quaternion.identity);
-        OnDie?.Invoke();
     }
 
     public void TakeHitState(bool state) => canTakeHit = state;

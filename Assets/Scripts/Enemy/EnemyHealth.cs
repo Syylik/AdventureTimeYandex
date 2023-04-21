@@ -9,7 +9,12 @@ public class EnemyHealth : Health
         {
             anim.SetTrigger("Die");
             Destroy(gameObject, 4f);
+            OnDie?.Invoke();
         }
-        else Destroy(gameObject);
+        else
+        {
+            Destroy(gameObject);
+            OnDie?.Invoke();
+        }
     }
 }
